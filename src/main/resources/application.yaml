@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: "Server App"
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hr_db_test
+    username: root
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql : true
+
+server:
+    port: 9001  

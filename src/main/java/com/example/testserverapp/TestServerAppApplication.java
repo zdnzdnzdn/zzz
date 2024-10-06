@@ -8,7 +8,7 @@ public class TestServerAppApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TestServerAppApplication.class, args);
-        // Menampilkan pesan ketika server berjalan
+        // Display a message when the server starts
         System.out.println("Server Test Server App is running");
     }
 }
