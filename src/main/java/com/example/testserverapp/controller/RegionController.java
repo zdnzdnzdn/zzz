@@ -1,6 +1,7 @@
 package com.example.testserverapp.controller;
 
-import com.example.testserverapp.entity.Region;
+import com.example.testserverapp.model.request.RegionRequest;
+import com.example.testserverapp.model.response.RegionResponse;
 import com.example.testserverapp.service.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,35 +21,38 @@ public class RegionController {
     }
 
     @GetMapping
-    public List<Region> getAllRegions() {
-        return regionService.findAll();
+    public List<RegionResponse> getAllRegions() {
+        return regionService.getAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Region> getRegionById(@PathVariable Integer id) {
-        return regionService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<RegionResponse> getRegionById(@PathVariable Integer id) {
+        RegionResponse regionResponse = regionService.getById(id);
+        if (regionResponse != null) {
+            return ResponseEntity.ok(regionResponse);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
-    public Region createRegion(@RequestBody Region region) {
-        return regionService.save(region);
+    public RegionResponse createRegion(@RequestBody RegionRequest regionRequest) {
+        return regionService.create(regionRequest);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Region> updateRegion(@PathVariable Integer id, @RequestBody Region regionDetails) {
-        return regionService.findById(id)
-                .map(region -> {
-                    region.setName(regionDetails.getName());
-                    return ResponseEntity.ok(regionService.save(region));
-                })
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<RegionResponse> updateRegion(@PathVariable Integer id, @RequestBody RegionRequest regionRequest) {
+        RegionResponse regionResponse = regionService.update(id, regionRequest);
+        if (regionResponse != null) {
+            return ResponseEntity.ok(regionResponse);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRegion(@PathVariable Integer id) {
-        regionService.deleteById(id);
+        regionService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

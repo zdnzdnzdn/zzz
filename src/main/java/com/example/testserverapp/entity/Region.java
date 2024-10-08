@@ -13,6 +13,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 @Table(name = "regions")
 public class Region {
@@ -26,7 +29,9 @@ public class Region {
     private String name;
 
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonProperty(access = Access.WRITE_ONLY)
     private List<Country> countries;
+
 
     // Getters and Setters
     public Integer getId() {

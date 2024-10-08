@@ -1,12 +1,14 @@
 package com.example.testserverapp.service;
 
-import com.example.testserverapp.entity.Country;
-import com.example.testserverapp.repository.CountryRepository;
-import org.springframework.stereotype.Service;
+import com.example.testserverapp.model.request.CountryRequest;
+import com.example.testserverapp.model.response.CountryResponse;
 
-@Service
-public class CountryService extends GenericService<Country, Integer> {
-    public CountryService(CountryRepository countryRepository) {
-        super(countryRepository);
-    }
+import java.util.List;
+
+public interface CountryService {
+    List<CountryResponse> getAll();
+    CountryResponse getById(Integer id);
+    CountryResponse create(CountryRequest request);
+    CountryResponse update(Integer id, CountryRequest request);
+    CountryResponse delete(Integer id);
 }
