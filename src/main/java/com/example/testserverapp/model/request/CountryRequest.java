@@ -1,10 +1,14 @@
 package com.example.testserverapp.model.request;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CountryRequest {
-    private Integer id;   
-    private String code; 
-    private String name; 
-    private RegionRequest region;
+
+  private String code;
+  private String name;
+  private Integer regionId;
 }

@@ -1,10 +1,16 @@
 package com.example.testserverapp.model.response;
 import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CountryResponse {
-    private Integer id;   
-    private String code; 
-    private String name;  
-    private RegionResponse region;
+
+  private Integer countryId;
+  private String countryCode;
+  private String countryName;
+  private Integer regionId;
+  private String regionName;
 }
