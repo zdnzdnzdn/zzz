@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        .email-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 700px;
+            margin: auto;
+        }
+        .header {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+            color: #333333;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #333333;
+        }
+        h2, h3 {
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h2 th:text="${title}">Monthly Report</h2>
+        </div>
+        <div class="content">
+            <p th:text="'Hello ' + ${recipientName} + ','">Hello John,</p>
+
+            <p>We hope this email finds you well. Here is a detailed overview of the information you requested regarding our project progress and future plans. Please take some time to read through all the sections below for a comprehensive understanding.</p>
+
+            <h3>1. Overview of Current Progress</h3>
+            <p>
+                The project is moving along as planned, with the following key milestones achieved:
+                <ul>
+                    <li th:text="${milestone1}">Milestone 1: Initial design completion</li>
+                    <li th:text="${milestone2}">Milestone 2: Backend development 80% complete</li>
+                    <li th:text="${milestone3}">Milestone 3: Frontend integration started</li>
+                </ul>
+                As of now, the team is focused on testing and quality assurance, ensuring that all components are aligned with the initial goals and user expectations.
+            </p>
+
+            <h3>2. Detailed Timeline and Deliverables</h3>
+            <p>
+                We are currently operating on the following timeline for the next phases of the project:
+                <ul>
+                    <li th:text="'Phase 1: ' + ${phase1Date}">Phase 1: November 15, 2024 - Final testing and bug fixing</li>
+                    <li th:text="'Phase 2: ' + ${phase2Date}">Phase 2: December 1, 2024 - Beta release for internal testing</li>
+                    <li th:text="'Phase 3: ' + ${phase3Date}">Phase 3: January 10, 2025 - Public launch</li>
+                </ul>
+                Please ensure that all team members are aware of these deadlines and that progress is tracked regularly.
+            </p>
+
+            <h3>3. Action Items for the Next Month</h3>
+            <p>
+                The following are the key action items that require immediate attention over the next month:
+                <ul>
+                    <li th:text="${actionItem1}">Action Item 1: Complete frontend integration</li>
+                    <li th:text="${actionItem2}">Action Item 2: Finalize API documentation</li>
+                    <li th:text="${actionItem3}">Action Item 3: Prepare marketing materials for launch</li>
+                </ul>
+                Each item must be assigned to the responsible team members, and status updates should be provided at the weekly meetings.
+            </p>
+
+            <h3>4. Additional Notes</h3>
+            <p>
+                Please keep in mind the following points:
+                <ul>
+                    <li>Ensure communication across departments remains clear and transparent.</li>
+                    <li>All team members should review the latest project documentation in the shared drive.</li>
+                    <li>Client feedback will be integrated in the next iteration, so please prepare for adjustments.</li>
+                </ul>
+            </p>
+
+            <p>We appreciate your dedication and effort in making this project a success. If you have any questions or need further clarification, feel free to reach out to the project manager directly.</p>
+
+            <p>Best regards,</p>
+            <p th:text="${senderName}">Project Management Team</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Company Name. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
