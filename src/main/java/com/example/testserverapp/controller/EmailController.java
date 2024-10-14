@@ -31,7 +31,7 @@ public class EmailController {
         return emailService.sendMessageWithAttachment(emailRequest);
     }
 
-    // Mengirim email dengan template HTML (menggunakan Thymeleaf)
+    // Mengirim email dengan template 
     @PostMapping("/template")
     public EmailRequest sendEmailWithTemplate(
         @RequestBody EmailRequest emailRequest

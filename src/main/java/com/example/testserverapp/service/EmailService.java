@@ -66,7 +66,6 @@ public class EmailService {
             helper.setTo(emailRequest.getTo());
             helper.setSubject(emailRequest.getSubject());
 
-            // Load HTML template dengan data dinamis menggunakan Thymeleaf
             Context context = new Context();
             context.setVariable("recipientName", emailRequest.getRecipientName());
             context.setVariable("title", emailRequest.getTitle());
@@ -81,10 +80,8 @@ public class EmailService {
             context.setVariable("actionItem3", emailRequest.getActionItem3());
             context.setVariable("senderName", emailRequest.getSenderName());
 
-            // Proses template dengan data dari EmailRequest
             String htmlContent = templateEngine.process("email-template-long-text", context);
 
-            // Atur konten email ke HTML
             helper.setText(htmlContent, true);
 
             if (emailRequest.getAttachment() != null && !emailRequest.getAttachment().isEmpty()) {
@@ -92,7 +89,6 @@ public class EmailService {
               helper.addAttachment(file.getFilename(), file);
           }
 
-            // Kirim email
             javaMailSender.send(message);
             log.info("Successfully sent email with HTML template...");
         } catch (Exception e) {
