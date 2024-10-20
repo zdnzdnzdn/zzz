@@ -1,21 +1,20 @@
 package com.example.testserverapp.entity;
 
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import jakarta.persistence.*;
-import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "employees")
-public class Employee implements Serializable {
-
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(length = 50, nullable = false)
     private String name;
@@ -26,7 +25,7 @@ public class Employee implements Serializable {
     @Column(length = 13)
     private String phone;
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private User user;
 }
-

@@ -28,6 +28,10 @@ spring:
           auth: true
           starttls:
             enable: true
+    security:
+       user:
+         name: user
+         password: user
 
 server:
   port: 9001
