@@ -15,7 +15,7 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/register")
+    @PostMapping("/registration")
     public Employee registration(@RequestBody RegistrationRequest registrationRequest) {
         return authService.registration(registrationRequest);
     }

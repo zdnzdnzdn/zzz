@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
-@EnableMethodSecurity(prePostEnabled = true)
+// @EnableMethodSecurity(prePostEnabled = true)
 public class AppSecurityConfig {
 
     private AppUserDetailService appUserDetailService;
@@ -29,7 +29,9 @@ public class AppSecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.POST, "/registration").permitAll()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest()
+                // .authenticated()
+                .permitAll()
             )
             .userDetailsService(appUserDetailService)
             .httpBasic(Customizer.withDefaults());
